@@ -1,0 +1,81 @@
+{% extends 'solec/index.html' %} {% load static %}
+
+	
+
+{% block content %}
+		<!--************************************
+				Banner Start
+		*************************************-->
+		<div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" data-image-src="{% static 'solec/images/slider/img-03.jpg' %}">
+			<div class="container">
+			<ul class="tg-breadcrumb">
+				<li>HOME</li>
+				<li>STORELOCATOR</li>
+			</ul>
+			</div>
+		</div>
+		<!--************************************
+				Banner End
+		*************************************-->
+	<!--************************************
+			Main Start
+	*************************************-->
+	<main id="main" class="tg-haslayout">
+		<div class="tg-main-section tg-haslayout tg-backgroundwhite">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<div id="storelocator" class="tg-haslayout">
+							<header class="tg-haslayout">
+								<div class="po-storesearch pull-right">
+									<form id="bh-sl-user-location" class="form-inline" method="post" action="#">
+										<input  type="text" id="bh-sl-address" name="bh-sl-address" />
+										<button class="po-bgcolor" type="submit"><i class="fa fa-search"></i></button>
+									</form>
+								</div>
+								<div class="pull-left">
+									<h2><i class="fa fa-globe"></i>Navigator</h2>
+								</div>
+							</header>
+							<div id="map-container" class="tg-haslayout">
+								<div id="map-results-container" class="tg-haslayout">
+									<div class="col-md-3 col-sm-5 col-xs-12">
+										<div class="bh-sl-loc-list" id="storelist">
+											<ul class="list list-unstyled"></ul>
+										</div>
+									</div>
+									<div class="col-md-9 col-sm-7 col-xs-12">
+										<div id="bh-sl-map" class="bh-sl-map"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<!--************************************
+			Main End
+	*************************************-->
+{% endblock %}
+{% block extra_js %}
+	<!--************************************
+			Calculator End
+	*************************************-->
+	<script src="js/vendor/jquery-pulgin.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
+	<script src="js/prettyPhoto.js"></script>
+	<script src="js/isotope.pkgd.js"></script>
+	<script src="js/hoverdir.js"></script>
+	<script src="js/owl.carousel.js"></script>
+	<script src="js/parallax.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/appear.js"></script>
+	<script src="js/countTo.js"></script>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/nicescroll.js"></script>
+	<script src="js/handlebars.min.js"></script>
+	<script src="{% static 'solec/js/gmap3.js' "></script>
+	
+{% endblock %}

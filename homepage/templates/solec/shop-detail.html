@@ -1,0 +1,536 @@
+{% extends 'solec/index.html' %} {% load static %}
+{% block seo %} {% endblock %}
+
+
+{% block content %}
+
+		<!--************************************
+				Banner Start
+		*************************************-->
+		<div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" data-image-src="images/slider/img-03.jpg">
+			<div class="container">
+			<ul class="tg-breadcrumb">
+				<li>HOME</li>
+				<li>SHOP DETAIL</li>
+			</ul>
+			</div>
+		</div>
+		<!--************************************
+				Banner End
+		*************************************-->
+		<!--************************************
+				Main Start
+		*************************************-->
+		<main id="main" class="tg-haslayout">
+			<div class="tg-main-section tg-haslayout tg-backgroundwhite">
+				<div class="container">
+					<div class="row">
+						<div id="tg-content" class="tg-content">
+							<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 pull-right">
+								<div class="row">
+									<div class="tg-product-detail">
+										<div class="col-sm-5">
+											<div id="tg-view-slider" class="tg-view-slider tg-border">
+												<div class="item">
+													<figure>
+														{% if object.image %}<img src="{{ object.image.url }}" alt="{{ object.title }}">
+                                                        {% else %}<img src="{% static 'no_image.png' %}" alt="{{ object.title }}">{% endif %}
+													</figure>
+												</div>
+												<div class="item">
+													<figure>
+														<img src="images/shop/large/img-02.jpg" alt="image description">
+													</figure>
+												</div>
+												<div class="item">
+													<figure>
+														<img src="images/shop/large/img-03.jpg" alt="image description">
+													</figure>
+												</div>
+												<div class="item">
+													<figure>
+														<img src="images/shop/large/img-04.jpg" alt="image description">
+													</figure>
+												</div>
+												<div class="item">
+													<figure>
+														<img src="images/shop/large/img-05.jpg" alt="image description">
+													</figure>
+												</div>
+												<div class="item">
+													<figure>
+														<img src="images/shop/large/img-06.jpg" alt="image description">
+													</figure>
+												</div>
+											</div>
+											<div id="tg-thumbnail-slider" class="tg-thumbnail-slider">
+												<div class="item tg-border">
+													<figure>
+														{% if object.image %}<img src="{{ object.image.url }}" alt="{{ object.title }}">
+                                                        {% else %}<img src="{% static 'no_image.png' %}" alt="{{ object.title }}">{% endif %}
+													</figure>
+												</div>
+												<div class="item tg-border">
+													<figure>
+														<img src="images/shop/small/img-02.jpg" alt="image description">
+													</figure>
+												</div>
+												<div class="item tg-border">
+													<figure>
+														<img src="images/shop/small/img-03.jpg" alt="image description">
+													</figure>
+												</div>
+												<div class="item tg-border">
+													<figure>
+														<img src="images/shop/small/img-04.jpg" alt="image description">
+													</figure>
+												</div>
+												<div class="item tg-border">
+													<figure>
+														<img src="images/shop/small/img-05.jpg" alt="image description">
+													</figure>
+												</div>
+												<div class="item tg-border">
+													<figure>
+														<img src="images/shop/small/img-06.jpg" alt="image description">
+													</figure>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-7">
+											<div class="tg-product-data">
+												<div class="tg-heading-border">
+													<h2><a href="#">{{ object }}</a></h2>
+													<div class="tg-rating">
+														<span>Rating: </span>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-half-o"></i>
+													</div>
+												</div>
+												<span class="tg-product-price">
+													<span>Price: </span>
+													<em>{{ object.tag_price }}</em>
+													<del>$45.15</del>
+												</span>
+												<div class="tg-description tg-bordertop tg-borderbottom">
+													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed dousmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip exea commodo consequat. Duis aute irure dolor in henderit in voluptate.</p>
+													<strong>100% Stainless Steel</strong>
+													<strong>Category: Charging Equipment</strong>
+													<span>Doloremque laudantium totam rem aperiam eaque.</span>
+												</div>
+												<div class="tg-haslayout">
+													<span class="availability">Availability: <strong>IN STOCK</strong></span>
+													<ul class="color-choser pull-right">
+														<li>Color:</li>
+														<li><a class="black" href="#"></a></li>
+														<li><a class="green" href="#"></a></li>
+														<li><a class="orange" href="#"></a></li>
+														<li><a class="yellow" href="#"></a></li>
+														<li><a class="red" href="#"></a></li>
+														<li><a class="white" href="#"></a></li>
+													</ul>
+												</div>
+												<div class="tg-haslayout">
+													<span class="quantity-sapn">
+														<em class="minus">-</em>
+														<input type="text" class="result" value="01" id="quantity1" name="quantity">
+														<em class="plus">+</em>
+													</span>
+													<a class="tg-btn" href="#">add t o cart</a>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12">
+											<div class="tg-product-tabs">
+												<ul role="tablist" class="tg-product-nav-tabs">
+													<li class="active" role="presentation">
+														<a data-toggle="tab" role="tab" aria-controls="description" href="#description">Description</a>
+													</li>
+													<li role="presentation">
+														<a data-toggle="tab" role="tab" aria-controls="reviews" href="#reviews">Reviews (3)</a>
+													</li>
+													<li role="presentation">
+														<a data-toggle="tab" role="tab" aria-controls="delivery-returns" href="#delivery-returns">Delivery &amp; Returns</a>
+													</li>
+												</ul>
+												<div class="tab-content tg-borderbottom">
+													<div id="description" class="tab-pane fade in active" role="tabpanel">
+														<div class="description">
+															<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusaum doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.</p>
+															<p>Sed ut perspiciatis unde omnis iste natus error sit Nemo enim ipsam voluptatem quia Nemo enim.Sed ut perspiciatis unde omnis iste natus error sit voluptatem. Nemo enim ipsam voluptatem quia Nemo enim.Sed ut perspiciatis unde omnis iste natus error sit voluptatem.Nemo enim ipsam voluptatem quia.</p>
+															<ul>
+																<li>Sed ut perspiciatis</li>
+																<li>Error sit volup</li>
+																<li> Doloremque laum</li>
+																<li>Doloremque laudan</li>
+																<li>Unde omnis iste nas</li>
+																<li>Accusantium</li>
+																<li>Totam rem aperiam</li>
+																<li>Totam rem aperiam	</li>
+															</ul>
+															<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur.</p>
+														</div>
+													</div>
+													<div id="reviews" class="tab-pane fade" role="tabpanel">
+														<div class="description">
+															<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusaum doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.</p>
+															<p>Sed ut perspiciatis unde omnis iste natus error sit Nemo enim ipsam voluptatem quia Nemo enim.Sed ut perspiciatis unde omnis iste natus error sit voluptatem. Nemo enim ipsam voluptatem quia Nemo enim.Sed ut perspiciatis unde omnis iste natus error sit voluptatem.Nemo enim ipsam voluptatem quia.</p>
+															<ul>
+																<li>Sed ut perspiciatis</li>
+																<li>Error sit volup</li>
+																<li> Doloremque laum</li>
+																<li>Doloremque laudan</li>
+																<li>Unde omnis iste nas</li>
+																<li>Accusantium</li>
+																<li>Totam rem aperiam</li>
+																<li>Totam rem aperiam	</li>
+															</ul>
+															<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur.</p>
+														</div>
+													</div>
+													<div id="delivery-returns" class="tab-pane fade" role="tabpanel">
+														<div class="description">
+															<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusaum doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.</p>
+															<p>Sed ut perspiciatis unde omnis iste natus error sit Nemo enim ipsam voluptatem quia Nemo enim.Sed ut perspiciatis unde omnis iste natus error sit voluptatem. Nemo enim ipsam voluptatem quia Nemo enim.Sed ut perspiciatis unde omnis iste natus error sit voluptatem.Nemo enim ipsam voluptatem quia.</p>
+															<ul>
+																<li>Sed ut perspiciatis</li>
+																<li>Error sit volup</li>
+																<li> Doloremque laum</li>
+																<li>Doloremque laudan</li>
+																<li>Unde omnis iste nas</li>
+																<li>Accusantium</li>
+																<li>Totam rem aperiam</li>
+																<li>Totam rem aperiam	</li>
+															</ul>
+															<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur.</p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--************************************
+										Products Start
+									*************************************-->
+									<div  class="tg-products tg-haslayout">
+										<div class="col-xs-12">
+											<h2>meet the team</h2>
+										</div>
+										<div class="col-sm-4 col-xs-6">
+											<div class="tg-product tg-border tg-haslayout">
+												<figure>
+													<span class="tg-sale">sale</span>
+													<a href="#">
+														<img src="images/shop/img-01.jpg" alt="image description">
+													</a>
+													<div class="tg-product-hover">
+														<a href="#" class="anchor-top"><i class="fa fa-cart-plus"></i></a>
+														<a href="#" class="anchor-right"><i class="fa fa-eye"></i></a>
+													</div>
+												</figure>
+												<div class="tg-product-data tg-bordertop">
+													<div class="tg-heading-border">
+														<h3><a href="#">Product title</a></h3>
+														<div class="tg-rating">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-half-o"></i>
+														</div>
+													</div>
+													<span class="tg-product-price">
+														<em>$37.00</em>
+														<del>$45.00</del>
+													</span>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-4 col-xs-6">
+											<div class="tg-product tg-border tg-haslayout">
+												<figure>
+													<a href="#">
+														<img src="images/shop/img-02.jpg" alt="image description">
+													</a>
+													<div class="tg-product-hover">
+														<a href="#" class="anchor-top"><i class="fa fa-cart-plus"></i></a>
+														<a href="#" class="anchor-right"><i class="fa fa-eye"></i></a>
+													</div>
+												</figure>
+												<div class="tg-product-data tg-bordertop">
+													<div class="tg-heading-border">
+														<h3><a href="#">Product title</a></h3>
+														<div class="tg-rating">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-half-o"></i>
+														</div>
+													</div>
+													<span class="tg-product-price">
+														<em>$37.00</em>
+														<del>$45.00</del>
+													</span>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-4 col-xs-6">
+											<div class="tg-product tg-border tg-haslayout">
+												<figure>
+													<a href="#">
+														<img src="images/shop/img-03.jpg" alt="image description">
+													</a>
+													<div class="tg-product-hover">
+														<a href="#" class="anchor-top"><i class="fa fa-cart-plus"></i></a>
+														<a href="#" class="anchor-right"><i class="fa fa-eye"></i></a>
+													</div>
+												</figure>
+												<div class="tg-product-data tg-bordertop">
+													<div class="tg-heading-border">
+														<h3><a href="#">Product title</a></h3>
+														<div class="tg-rating">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-half-o"></i>
+														</div>
+													</div>
+													<span class="tg-product-price">
+														<em>$37.00</em>
+														<del>$45.00</del>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--************************************
+										Products End
+									*************************************-->
+								</div>
+							</div>
+							<!--************************************
+										Sidebar Start
+							*************************************-->
+							<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 pull-left">
+								<aside id="tg-shop-sidebar" class="tg-shop-sidebar">
+									<div class="tg-widget sidebar-search">
+										<div class="tg-widget-holder">
+											<form class="search-form">
+												<fieldset>
+													<input type="search" class="form-control" placeholder="Search...">
+													<button class="fa fa-search" type="submit"></button>
+												</fieldset>
+											</form>
+										</div>
+									</div>
+									<div class="tg-widget widget-accordions">
+										<div class="tg-widget-holder">
+											<h3>Categories</h3>
+											<ul class="tg-haslayout accordion" id="accordion" role="tablist" aria-multiselectable="true">
+												<li class="tg-panel panel">
+													<div class="tg-panel-heading actives" role="tab" id="headingOne">
+														<h4 class="actives">
+															<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Marketing</a>
+														</h4>
+													</div>
+													<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+														<ul>
+														<li><a href="#">Graphic Design</a></li>
+														<li><a href="#">Marketing</a></li>
+														<li><a href="#">Photography</a></li>
+													</ul>
+													</div>
+												</li>
+												<li class="tg-panel panel">
+													<div class="tg-panel-heading" role="tab" id="headingTwo">
+														<h4>
+															<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Wordpress</a>
+														</h4>
+													</div>
+													<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+														<ul>
+														<li><a href="#">Graphic Design</a></li>
+														<li><a href="#">Marketing</a></li>
+														<li><a href="#">Photography</a></li>
+													</ul>
+													</div>
+												</li>
+												<li class="tg-panel panel">
+													<div class="tg-panel-heading" role="tab" id="headingThree">
+														<h4>
+															<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">eCommerce</a>
+														</h4>
+													</div>
+													<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+														<ul>
+														<li><a href="#">Graphic Design</a></li>
+														<li><a href="#">Marketing</a></li>
+														<li><a href="#">Photography</a></li>
+													</ul>
+													</div>
+												</li>
+												<li class="tg-panel panel">
+													<div class="tg-panel-heading" role="tab" id="headingFour">
+														<h4>
+															<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">Html</a>
+														</h4>
+													</div>
+													<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+														<ul>
+														<li><a href="#">Graphic Design</a></li>
+														<li><a href="#">Marketing</a></li>
+														<li><a href="#">Photography</a></li>
+													</ul>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="tg-widget widget-brands">
+										<div class="tg-widget-holder">
+											<h3>Sort by Brands</h3>
+											<ul>
+												<li>
+													<a href="#">
+														<em>Web Design</em>
+														<i>389</i>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<em>Marketing</em>
+														<i>256</i>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<em>Wordpress</em>
+														<i>56</i>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<em>Graphic Design</em>
+														<i>43</i>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<em>Photography</em>
+														<i>38</i>
+													</a>
+												</li>
+											</ul>
+										</div>
+</div>
+									<div class="tg-widget widget-filterbyprice">
+										<div class="tg-widget-holder">
+											<h3>Filter by Price</h3>
+											<div class="tg-filterbyprice">
+												<div id="slider-range" class="slider-range"></div>
+												<div class="price-display">
+													<div class="prices">
+														<label for="amount">Price : </label>
+														<input type="text" id="amount" readonly />
+													</div>
+													<button type="submit" class="filter tg-btn">Filter Now</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="tg-widget widget-popularproducts">
+										<div class="tg-widget-holder">
+											<h3>Most Popular</h3>
+											<ul class="product_list_widget">
+												<li>
+													<a href="#"><img src="images/thumbs/thumb-10.jpg" alt="image description"></a>
+													<div class="tg-product-data">
+														<span class="product-title">Product Title</span>
+														<span class="amount">£300.00</span>
+														<span class="rating">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-half-o"></i>
+															<i class="fa fa-star-o"></i>
+														</span>
+													</div>
+												</li>
+												<li>
+													<a href="#"><img src="images/thumbs/thumb-11.jpg" alt="image description"></a>
+													<div class="tg-product-data">
+														<span class="product-title">Product Title</span>
+														<span class="amount">£300.00</span>
+														<span class="rating">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-half-o"></i>
+															<i class="fa fa-star-o"></i>
+														</span>
+													</div>
+												</li>
+												<li>
+													<a href="#"><img src="images/thumbs/thumb-12.jpg" alt="image description"></a>
+													<div class="tg-product-data">
+														<span class="product-title">Product Title</span>
+														<span class="amount">£300.00</span>
+														<span class="rating">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-half-o"></i>
+															<i class="fa fa-star-o"></i>
+														</span>
+													</div>
+												</li>
+												<li>
+													<a href="#"><img src="images/thumbs/thumb-13.jpg" alt="image description"></a>
+													<div class="tg-product-data">
+														<span class="product-title">Product Title</span>
+														<span class="amount">£300.00</span>
+														<span class="rating">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-half-o"></i>
+															<i class="fa fa-star-o"></i>
+														</span>
+													</div>
+												</li>
+												<li>
+													<a href="#"><img src="images/thumbs/thumb-14.jpg" alt="image description"></a>
+													<div class="tg-product-data">
+														<span class="product-title">Product Title</span>
+														<span class="amount">£300.00</span>
+														<span class="rating">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-half-o"></i>
+															<i class="fa fa-star-o"></i>
+														</span>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</aside>
+							</div>
+							<!--************************************
+										Sidebar End
+							*************************************-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<!--************************************
+				Main End
+		*************************************-->
+{% endblock %}

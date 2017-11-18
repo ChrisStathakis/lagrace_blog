@@ -1,0 +1,234 @@
+{% extends 'solec/index.html' %} {% load static %}
+
+{% block seo_title %}
+    <title>{{ page_title }}</title>
+    <meta name="description" content="{{ page_description }}">
+    <meta name="keywords" content="{{ page_keywords }}">
+{% endblock %}
+
+{% block facebook_block %}
+	<meta property="og:image" content="{{ object.image.url }}"/>
+	<meta property="og:image:secure_url" content="{{ object.image.url }}" />
+	<meta property="og:description" content="{{ page_description }}" />
+{% endblock %}
+
+{% block menu_ul %}
+          <ul style='display: inline;' class="nav navbar-nav navbar-right">
+            <li ><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'stores' %}">Καταστηματα</a></li>   
+            <li class="active"><a href="{% url 'blog' %}">Blog</a></li>
+          </ul>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+
+
+	.sliding-background {
+	  background: url("{{ object.category.carousel_image.url }}") repeat-x;
+	  height: 560px;
+	  width: 5076px;
+	  animation: slide 60s linear infinite;
+	  overflow: hidden;
+	}
+
+	@keyframes slide{
+	  0%{
+	    transform: translate3d(0, 0, 0);
+	  }
+	  100%{
+	    transform: translate3d(-1692px, 0, 0);
+	  }
+	}
+
+
+</style>
+{% endblock %}
+{% block content %}
+		<!--************************************
+				Banner Start
+		*************************************-->
+		<div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" data-image-src="{{ object.category.image.url }}">
+			<div class="container">
+			<ul class="tg-breadcrumb">
+				<li><a style="color: white" href="{% url 'homepage' %}">HOME</a></li>
+				<li><a style="color: white" href="{% url 'blog' %}">Blog</a>/</li>
+				<li>{{ object.title }}</li>
+			</ul>
+			</div>
+		</div>
+		<!--************************************
+				Banner End
+		*************************************-->
+		<!--************************************
+				Main Start
+		*************************************-->
+		<main id="main" class="tg-haslayout">
+			<!--************************************
+				Blog Detail Start
+			*************************************-->
+			<div style="margin-bottom: : 0%;padding-bottom: : 0%;" class="tg-main-section tg-haslayout tg-backgroundwhite">
+				<div class="container">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="tg-post-head">
+									<div class="left-box">
+										<div class="tg-heading-border">
+											<h3><a href="#">{{ object.title }}</a></h3>
+										</div>
+									</div>			
+								</div>
+								<div class="tg-post-content tg-haslayout">
+									<div class="tg-author-info">
+											<figure>
+													<img src="{{ object.image.url }}" alt="image description">
+												</figure>
+												<div class="author-name">
+													<h3><a href="#">Lagrace</a></h3>
+													<ul>
+														<li><a href="#">Ημερομηνία</a></li>
+														<li><time datetime="2015-12-10 14:50">
+														{{ object.date_added|date }}</time></li>
+													</ul>
+												</div>
+											</div>
+											<div class="tg-blog-tags">
+												<a href="#"><i class="fa fa-tag"></i></a>
+												<span><a href="#">{{ object.category }}</a></span>
+											</div>
+											<div class="tg-description">
+												{{ object.context|safe }}
+											</div>
+										</div>
+										<div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+										</div>	
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--************************************
+				Team Start
+			*************************************-->
+			<section style="margin-top: 0%;padding-top: 0%;" class="tg-main-section tg-haslayout">
+				<div class="container-fluid">
+					<div class="row">
+						 <div class="sliding-background"></div>
+					</div>
+				</div>
+			</section>
+			<!--************************************
+				Team End
+			*************************************-->
+						<div class="row">
+							<!--************************************
+									Save The Planet Start
+							*************************************-->
+						    <section style="margin-top: 0%;padding-top: 0%;" class="tg-main-section tg-haslayout bg-dark">
+						      <div class="container">
+						        <div class="row">
+						          <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+						            <div class="tg-section-head">
+									  <div class="tg-heading">
+						              	<h2>Τα προϊοντα μας</h2>
+						              	<p>Πατήστε πάνω στο προίον για να δείτε την αντίστοιχη κατηγορία στο mymoda.gr!	</p>
+									  </div>
+						             
+						            </div>
+						          </div>
+						          <div class="col-xs-12">
+						            <div class="tg-portfolio tg-haslayout">
+						              <div class="tg-portfolio-head tg-haslayout">
+						                <nav class="tg-nav">
+						                  <div class="navbar-header">
+						                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+						                  </div>
+						                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+						                    <ul id="tg-filterbale-nav" class="option-set">
+						                      <li class="current-menu-item"><a data-filter="*" href="#">All</a></li>
+						                      {% for category in post_brands %}
+						                      	<li><a data-filter=".{{ category.css_class }}" href="#">{{ category }}</a></li>
+						                      {% endfor %}	
+						                    </ul>
+						                  </div>
+						                </nav>
+						              </div>
+						              <div class="clearfix"></div>
+						              <div class="row">
+						                <div id="filter-masonry" class="tg-portfolio-content tg-haslayout">
+						                	{% for post in gallery %}
+							                  <div class="masonry-grid {{ post.brand_related.css_class }}">
+							                    <div class="tg-project tg-border">
+							                      <figure> <img src="{{ post.image.url }}" alt="image description"> </figure>
+							                      <div class="tg-portfolio-hover">
+							                      	<a href="{{ post.image.url }}" data-rel="prettyPhoto[flickr]"> {{ post.title }}</a> 
+							                      	{% if post.href_ %}
+							                        <a target="_blank" class="anchor-bottom" href="{{ post.href_ }}"><i class="fa fa-external-link"></i></a> 
+							                        {% endif %}
+							                      
+							                      </div>
+							                    </div>
+							                  </div>
+						                  {% endfor %}                                
+						                </div>
+						              </div>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
+						    </section>
+						    <!--************************************
+									Save The Planet End
+							*************************************--> 
+						</div>
+						<div class="row">
+							<!--************************************
+								Team Start
+							*************************************-->
+							<div class="tg-main-section tg-haslayout tg-backgroundwhite">
+								<div class="container">
+									<div class="row">
+						          <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+						            <div class="tg-section-head">
+									  <div class="tg-heading">
+						              	<h2>Τα Brands μας</h2>
+									  </div>						             					             
+						            </div>
+						          </div>
+									<div class="row">
+										<div id="tg-team-slider" class="tg-team tg-haslayout">
+										 	{% for brand in post_brands %}
+												<div class="item">
+												  <div class="tg-member tg-haslayout">
+													<figure><a href="{{ brand.href }}"> <img src="{{ brand.image.url }}" alt="image description"> </a>
+													  <div class="tg-team-hover">
+													   <a href="{{ brand.href }}" class="anchor-right"><i class="fa fa-external-link"></i></a>
+														
+													   <div class="tg-heading-border">
+													   		<h3>{{ brand }}</h3>
+													   </div>
+													  </div>
+													</figure>
+												  </div>
+												</div>
+											{% endfor %}	
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--************************************
+								Team End
+							*************************************-->
+						</div>
+						
+				</div>
+			</div>
+			<!--************************************
+				Blog Detail End
+			*************************************-->
+		</main>
+		<!--************************************
+				Main End
+		*************************************-->
+{% endblock %}

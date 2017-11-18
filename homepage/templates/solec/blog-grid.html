@@ -1,0 +1,287 @@
+{% extends 'solec/index.html' %} {% load static %}
+
+ {% block seo_title %}
+        <title>{{ page_title }}</title>
+        <meta name="description" content="{{ description }}">
+        <meta name="keywords" content="{{ keywords }}">
+    {% endblock %}
+
+{% block menu_ul %}
+          <ul style='display: inline;' class="nav navbar-nav navbar-right">
+            <li ><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'stores' %}">Καταστηματα</a></li>   
+            <li class="active"><a href="{% url 'blog' %}">Blog</a></li>
+          </ul>
+{% endblock %}
+    
+{% block extra_css %}
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	 <script src="{% static 'waypoints/js/jquery.waypoints.min.js' %}"></script>
+	 <script src="{% static 'waypoints/js/infinite.min.js' %}"></script>
+ 	 <style type="text/css">
+ 		.searchbar {
+			  position: relative;
+			  margin: 0 auto;
+			  height: 60px;
+			  min-width: 150px;
+			}
+			@media (min-width: 768px) {
+			  .searchbar {
+			    width: 70%;
+			    height: 40px;
+			    overflow: hidden;
+			  }
+			}
+			@media (min-width: 1100px) {
+			  .searchbar {
+			    width: 50%;
+			  }
+			}
+
+				input[type="search"] {
+					height: 45px;
+				}
+			.searchbar--input,
+			.searchbar--buttons {
+			  top: 0;
+			  right: 0;
+
+			}
+			@media (min-width: 768px) {
+			  .searchbar--input,
+			  .searchbar--buttons {
+			    position: absolute;
+			  }
+			}
+
+			.searchbar--input,
+			.searchbar--select,
+			.searchbar--submit {
+			  border: none;
+			  outline: none;
+			}
+
+			.searchbar--input {
+			  width: 100%;
+			  padding: 20px 0 20px 10px;
+			  height: 60px;
+			  font-size: 16px;
+			}
+			@media (min-width: 768px) {
+			  .searchbar--input {
+			    height: 40px;
+			  }
+			}
+
+			.searchbar--submit,
+			.searchbar--select {
+			  cursor: pointer;
+			  -webkit-appearance: none;
+			  appearance: none;
+			}
+
+			.searchbar--submit {
+			  width: 80px;
+			  height: 50px;
+			  padding: 0;
+			  margin: 5px;
+			  line-height: 32px;
+			  display: block;
+			  float: right;
+			  font-size: 14px;
+			  letter-spacing: .5px;
+			  border-radius: 4px;
+			  color: #fff;
+			}
+			@media (max-width: 767px) {
+			  .searchbar--submit {
+			    width: 36%;
+			  }
+			}
+			@media (min-width: 768px) {
+			  .searchbar--submit {
+			    height: 30px;
+			  }
+			}
+
+			.searchbar--select {
+			  height: 50px;
+			  margin: 5px 0;
+			  padding: 0 40px 0 20px;
+			  border-radius: 0;
+			  color: #8a8a8a;
+			  letter-spacing: .25px;
+			}
+			@media (max-width: 767px) {
+			  .searchbar--select {
+			    width: 100%;
+			  }
+			}
+			@media (min-width: 768px) {
+			  .searchbar--select {
+			    height: 30px;
+			  }
+			}
+
+			.select-wrapper {
+			  position: relative;
+			  float: right;
+			}
+			@media (max-width: 767px) {
+			  .select-wrapper {
+			    width: 60%;
+			  }
+			}
+			.select-wrapper:after {
+			  content: '>';
+			  font: 18px "Consolas", monospace;
+			  color: #b3b1b1;
+			  -webkit-transform: rotate(90deg);
+			  -moz-transform: rotate(90deg);
+			  -ms-transform: rotate(90deg);
+			  transform: rotate(90deg);
+			  right: 20px;
+			  top: 19px;
+			  padding: 0 0 2px;
+			  position: absolute;
+			  pointer-events: none;
+			}
+			@media (min-width: 768px) {
+			  .select-wrapper:after {
+			    top: 10px;
+			  }
+			}
+
+ 	</style>
+ 	
+ {% endblock %}
+
+{% block content %}
+		<!--************************************
+				Banner Start
+		*************************************-->
+		<div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2"
+             {% if index_page.category_image %}
+              data-image-src="{{ index_page.category_image }}" 
+              {% elif blog_page %}
+              data-image-src="{% static 'blog_wall.jpg' %}" 
+              {% elif store_page %}
+              data-image-src="{% static 'cat_wall.jpg' %}" 
+              {% else %}
+              data-image-src="{% static 'solec/images/slider/img-03.jpg' %}" 
+              {% endif %}>
+			<div class="container">
+			<ul class="tg-breadcrumb">
+				<li><a style="color: white" href="{% url 'homepage' %}">HOME</a></li>
+				<li>{{ page_bread }}</li>
+			</ul>
+			</div>
+		</div>
+		<!--************************************
+				Banner End
+		*************************************-->
+		<!--************************************
+				Main Start
+		*************************************-->
+		<main id="main" class="tg-haslayout">
+			
+			<!--************************************
+				Our Blog Start
+			*************************************-->
+			<div class="tg-main-section tg-haslayout tg-backgroundwhite">
+
+				{% if blog_page %}<div class="container">
+					<form style="margin-bottom: 5%" method="get">
+						<div style="margin-bottom: 10%: " class="row">
+							<div class="container">
+								{% for category in blog_categories %}
+									{% if category.id|stringformat:'s' in cate_name %}
+									<label onchange="this.form.submit()"  class="alert alert-success col-md-4 col-sm-3"> <input checked value="{{ category.id }}" type="checkbox" name="cate_name"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{ category.title }} </label>
+									{% else %}
+									<label onchange="this.form.submit()"  class="alert alert-info col-md-4 col-sm-3"> <input value="{{ category.id }}" type="checkbox" name="cate_name"><i class="fa fa-hand-o-right" aria-hidden="true"></i> {{ category.title }} </label>
+									{% endif %}
+								{% endfor %}
+							</div>
+						</div>
+						<div class="row">
+							<div style="height: 100px;" class="searchbar">
+								{% if search_pro %}
+							  <input type="search" name='search_pro' class="searchbar--input" value="{{ search_pro }}" placeholder="{{ search_pro }}">
+							  {% else %}
+							  	<input  type="search" name='search_pro' class="searchbar--input" placeholder="Αναζήτηση...">
+							  {% endif %}
+							  <div class="searchbar--buttons">
+							    <input type="submit" class="searchbar--submit" value="Search">   
+							    <a href="{% url 'blog' %}" class="btn btn-warning">Καθαρισμός φίλτρων</a>
+							</div>
+							
+						</div>
+						
+					</form>
+						</div>
+					</div>
+					{% endif %}
+					<div class="row">
+						<div id="tg-content" class="tg-content">
+							<div  class="tg-posts tg-haslayout infinite-container">
+                                {% for category in object_list %}
+								<div class="col-md-12 col-sm-12 col-xs-12 infinite-item">
+								  <article class="tg-post">
+								  	<figure class="tg-post-img">
+										<a href="{{ category.get_absolute_url }}"><img {% if category.image %} src="{{ category.image.url }}" {% else %} src="{% static 'no_image.png' %}" {% endif %} alt="{{ category.title }}"></a>
+										<a href="{{ category.get_absolute_url }}"
+										<figcaption class="fig-hover">
+											<a class="anchor-bottom" href="{{ category.get_absolute_url }}"><i class="fa fa-angle-right"></i></a>
+										</figcaption>
+									</a>
+									</figure>
+									<div class="tg-post-area ">
+										<div class="tg-post-hover tg-border">
+										  <div class="tg-post-data tg-haslayout">
+											<div class="tg-heading-border">
+											  <h3><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></h3>
+											</div>
+											<div class="tg-description">
+											  <p>{{ category.date_added|date }}</p>
+											</div>
+										  </div>
+										</div>
+									</div>
+								  </article>
+								</div>
+								{% empty %}
+								<div class="alert alert-danger">
+								  <strong>Λυπούμαστε..</strong> Δεν έχουμε κάτι που να σας ενδιαφέρει , δοκιμάστε κάποια άλλη αναζήτηση!
+								</div>
+                                {% endfor %}
+							</div>
+							{% if page_obj.has_next %}
+								<div class="col-md-12 col-sm-12 col-xs-12">
+							    <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
+							</div>
+							  {% endif %}
+					</div>
+				</div>
+			</div>
+			<!--************************************
+				Our Blog End
+			*************************************-->
+		</main>
+		<!--************************************
+				Main End
+		*************************************-->
+{% endblock %}
+
+{% block extra_js %}
+	<script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      onBeforePageLoad: function () {
+        $('.loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('.loading').hide();
+      }
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends 'solec/index.html' %} {% load static %}
+
+{% block ceo %}
+
+{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'solec/solec_extra_css.css' %}"> {% endblock %}
+
+{% block content %}
+    <!--************************************
+				Banner Start
+		*************************************-->
+		<div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" data-image-src="{% static 'solec/images/slider/img-03.jpg' %}">
+			<div class="container">
+			<ul class="tg-breadcrumb">
+				<li>HOME</li>
+				<li>SHOP GEID</li>
+			</ul>
+			</div>
+		</div>
+		<!--************************************
+				Banner End
+		*************************************-->
+
+    <!--************************************
+				Main Start
+		*************************************-->
+		<main id="main" class="tg-haslayout">
+			<div class="tg-main-section tg-haslayout tg-backgroundwhite">
+				<div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                                <form method="post" class="form-signin mg-btm">{% csrf_token %}
+                                    <h3 class="heading-desc">
+                                        <button type="button" class="close pull-right" aria-hidden="true"></button>
+                                        Login</h3>
+                                    <div class="social-box">
+                                        <div class="row mg-btm">
+                                            <div class="col-md-12">
+                                                <a href="#" class="btn btn-primary btn-block">
+                                                    <i class="icon-facebook"></i>    Login with Facebook
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <a href="#" class="btn btn-info btn-block" >
+                                                    <i class="icon-twitter"></i>    Login with Twitter
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="main-login main-center">
+                                        <div class="form-group">
+                                            <label for="username" class="cols-sm-2 control-label">Username</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" name="login_username" id="username"  placeholder="Enter your Username"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password" class="cols-sm-2 control-label">Password</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                                    <input type="password" class="form-control" name="login_password" id="password"  placeholder="Enter your Password"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="login-footer">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-md-6">
+                                                <div class="left-section">
+                                                    <a href="{% url 'password_reset' %}">Forgot your password?</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-md-6 pull-right">
+                                                <button name="login" type="submit" class="btn btn-large btn-danger pull-right">Login</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <form method="post" class="form-signin mg-btm">{% csrf_token %}
+                                    <h3 class="heading-desc">
+                                        <button type="button" class="close pull-right" aria-hidden="true"></button>
+                                        Register</h3>
+                                    <div class="social-box">
+                                        <div class="row mg-btm">
+                                            <div class="col-md-12">
+                                                <a href="#" class="btn btn-primary btn-block">
+                                                    <i class="icon-facebook"></i>    Login with Facebook
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <a href="#" class="btn btn-info btn-block" >
+                                                    <i class="icon-twitter"></i>    Login with Twitter
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="main-login main-center">
+                                        {% for ele in register_form %}
+                                            <div class="form-group">
+                                                <label for="name" class="cols-sm-2 control-label">{{ ele.label }}</label>
+                                                <div class="cols-sm-10">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                                        {{ ele }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        <div class="form-group ">
+                                            {{ register_form.errors }}
+                                            <button type="submit" name="register" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+{% endblock %}

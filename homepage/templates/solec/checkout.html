@@ -1,0 +1,204 @@
+{% extends 'solec/index.html' %} {% load static %}
+
+{% block seo_title %}
+
+{% endblock %}
+
+{% block content %}
+     <!--************************************
+				Banner Start
+	*************************************-->
+    {% if object.image %}
+		<div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" data-image-src="{{ object.image.url }}">
+			<div class="container">
+			<ul class="tg-breadcrumb">
+				<li>Home</li>
+				<li>{% if object %}{{ object }}{% else %}{{ page_title }}{% endif %}</li>
+			</ul>
+			</div>
+		</div>
+    {% else %}
+        <div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" data-image-src="{% static 'solec/images/slider/img-03.jpg' %}">
+			<div class="container">
+			<ul class="tg-breadcrumb">
+				<li>Home</li>
+				<li>{% if object %}{{ object }}{% else %}{{ page_title }}{% endif %}</li>
+			</ul>
+			</div>
+		</div>
+    {% endif %}
+		<!--************************************
+				Banner End
+		*************************************-->
+    <main id="main" class="tg-haslayout">
+			<!--************************************
+				Our Blog Start
+			*************************************-->
+			<div class="tg-main-section tg-haslayout tg-backgroundwhite">
+				<div class='container'>
+                    <div class='row' style='padding-top:25px; padding-bottom:25px;'>
+                        <div class='col-md-12'>
+                            <div id='mainContentWrapper'>
+                                <div class="col-md-8 col-md-offset-2">
+                                <form method="post">{% csrf_token %}
+                                    <h2 style="text-align: center;">
+                                        Review Your Order & Complete Checkout
+                                    </h2>
+                                    <hr/>
+                                    <a href="#" class="btn btn-info" style="width: 100%;">Add More Products & Services</a>
+                                    <hr/>
+                                    <div class="shopping_cart">
+                                        <div class="panel-group" id="accordion">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Review
+                                                            Your Order</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseOne" class="panel-collapse collapse in">
+                                                    <div class="panel-body">
+                                                        <div class="items">
+                                                            <div class="col-md-9">
+                                                                {% for product in cart_items %}
+                                                                    <table class="table table-striped">
+                                                                    <tr>
+                                                                        <td colspan="2">
+                                                                            <a class="btn btn-warning btn-sm pull-right" href="" title="Remove Item">X</a>
+                                                                            <b>{{ product }}</b>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <ul>
+                                                                                <li>Category {{ product.product_related.site_category.first }}</li>
+                                                                                <li>Brand {{ product.product_related.brand }}</li>
+                                                                                <li>Qty {{ product.qty }}, Price {{ product.tag_price }}</li>
+                                                                            </ul>
+                                                                        </td>
+                                                                            <td>
+                                                                                <b>{{ product.tag_total_price }}</b>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                {% endfor %}
+                                                            </div>
+                                                                <div class="col-md-3">
+                                                                    <div style="text-align: center;">
+                                                                        <h3>Order Total</h3>
+                                                                        <h3><span style="color:green;">{{ cart.tag_total_value }}</span></h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <div style="text-align: center; width:100%;">
+                                                        <a style="width:100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                                                           class=" btn btn-success" onclick="$(this).fadeOut(); $('#payInfo').fadeIn();">
+                                                            Continue
+                                                            to Billing Information»
+                                                        </a>
+                                                    </div>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Contact
+                                                        and Billing Information</a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseTwo" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <b>Help us keep your account safe and secure, please verify your billing
+                                                            information.</b>
+                                                    <br/><br/>
+                                                    <table class="table table-striped" style="font-weight: bold;">
+                                                        {% for item in form %}
+                                                            <tr>
+                                                                <td style="width: 175px;">
+                                                                    <label for="id_email">{{ item.label }}</label></td>
+                                                                <td>
+                                                                    {{ item }}
+                                                                </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <div style="text-align: center;">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                                                           class=" btn   btn-success" id="payInfo" style="width:100%;display: none;"
+                                                           onclick="$(this).fadeOut();document.getElementById('collapseThree').scrollIntoView()">
+                                                            Enter Payment Information »
+                                                        </a>
+                                                    </div>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                                        <b>Payment Information</b>
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseThree" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <span class='payment-errors'></span>
+                                                    {% for item in payment_form %}
+                                                        <fieldset>
+                                                        <legend>{{ item.label }}</legend>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label" for="card-holder-name">{{ item.label }}</label>
+                                                            <div class="col-sm-9">
+                                                                {{ item }}
+                                                            </div>
+                                                        </div>
+                                                        </fieldset>
+                                                    {% endfor %}
+                                                    <button type="submit" class="btn btn-success btn-lg" style="width:100%;">Pay
+                                                        Now
+                                                    </button>
+                                                    <br/>
+                                        <div style="text-align: left;"><br/>
+                                            By submiting this order you are agreeing to our <a href="/legal/billing/">universal
+                                                billing agreement</a>, and <a href="/legal/terms/">terms of service</a>.
+                                            If you have any questions about our products or services please contact us
+                                            before placing this order.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<!--************************************
+				Our Blog End
+			*************************************-->
+		</main>
+		<!--************************************
+				Main End
+		*************************************-->
+
+
+
+
+
+{% endblock %}

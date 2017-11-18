@@ -1,0 +1,236 @@
+{% extends 'solec/index.html' %} {% load static %}
+
+
+{% block content %}
+		<!--************************************
+				Banner Start
+		*************************************-->
+		<div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" data-image-src="{% static 'solec/images/img-03.jpg' %}">
+			<div class="container">
+			<ul class="tg-breadcrumb">
+				<li>HOME</li>
+				<li>Blog</li>
+			</ul>
+			</div>
+		</div>
+		<!--************************************
+				Banner End
+		*************************************-->
+		<!--************************************
+				Main Start
+		*************************************-->
+		<main id="main" class="tg-haslayout">
+			<!--************************************
+					Save The Planet Start
+			*************************************-->
+			<section class="tg-main-section tg-haslayout bg-dark">
+			  <div class="container">
+				<div class="row">
+				  <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+					<div class="tg-section-head">
+					  <div class="tg-heading">
+						<h2>Saving the planet</h2>
+					  </div>
+					  <div class="tg-description">
+						<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimiam uis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					  </div>
+					</div>
+				  </div>
+				  <div class="col-xs-12">
+					<div class="tg-portfolio tg-haslayout">
+					  <div class="tg-portfolio-head tg-haslayout">
+						<nav class="tg-nav">
+						  <div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+						  </div>
+						  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+							<ul id="tg-filterbale-nav" class="option-set">
+							  <li class="current-menu-item"><a data-filter="*" href="#">All</a></li>
+                                {% for category in blog_categories %}
+                                    <li><a data-filter=".{{ category.title }}" href="#">{{ category }}</a></li>
+                                {% endfor %}
+							  <li><a data-filter=".ecosystem" href="#">Ecosystem</a></li>
+							  <li><a data-filter=".organic" href="#">organic</a></li>
+							  <li><a data-filter=".biology" href="#">biology</a></li>
+							  <li><a data-filter=".organic" href="#">Recycling</a></li>
+							</ul>
+						  </div>
+						</nav>
+					  </div>
+					  <div class="clearfix"></div>
+					  <div class="row">
+						<div id="filter-masonry" class="tg-portfolio-content tg-haslayout">
+                            {% for post in object_list %}
+						        <div class="masonry-grid {{ post.category.title }}">
+                                    <div class="tg-project tg-border">
+                                        <figure>
+                                            <img src="images/portfolio/img-01.jpg" alt="image description">
+                                        </figure>
+                                        <div class="tg-portfolio-hover">
+                                            <a class="anchor-bottom" href="images/portfolio/img-01.jpg" data-rel="prettyPhoto[product]"><i class="fa fa-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+						</div>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</section>
+			<!--************************************
+					Save The Planet End
+			*************************************-->
+			<!--************************************
+					Counter Start
+			*************************************-->
+			<section class="tg-main-section tg-haslayout tg-bggreen tg-padding-half">
+			<div class="container">
+			<div class="row">
+			<div class="tg-counters">
+			<div class="tg-counter">
+			  <div class="tg-heading-border tg-borderwhite">
+				<h2><span class="tg-timer" data-from="0" data-to="6587" data-speed="8000" data-refresh-interval="50">6587</span></h2>
+			  </div>
+			  <h3>Satisfied Clients</h3>
+			</div>
+			<div class="tg-counter">
+			  <div class="tg-heading-border tg-borderwhite">
+				<h2><span class="tg-timer" data-from="0" data-to="896" data-speed="8000" data-refresh-interval="50">896</span></h2>
+			  </div>
+			  <h3>Completed Projects</h3>
+			</div>
+			<div class="tg-counter">
+			  <div class="tg-heading-border tg-borderwhite">
+				<h2><span class="tg-timer" data-from="0" data-to="1674" data-speed="8000" data-refresh-interval="50">1674</span></h2>
+			  </div>
+			  <h3>Likes on Average</h3>
+			</div>
+			<div class="tg-counter">
+			  <div class="tg-heading-border tg-borderwhite">
+				<h2><span class="tg-timer" data-from="0" data-to="769" data-speed="8000" data-refresh-interval="50">769</span></h2>
+			  </div>
+			  <h3>We Launched</h3>
+			</div>
+			</div>
+			</div>
+			</div>
+			</section>
+			<!--************************************
+					Counter End
+			*************************************--> 
+			<!--**********************************
+					Why Choose us Start
+			*************************************-->
+			<section class="tg-main-section tg-haslayout">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+            <div class="tg-section-head">
+              <h2>why choose us</h2>
+              <div class="tg-description">
+                <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimiam uis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </div>
+          <div class="tg-whychoiceus tg-haslayout">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+              <div class="tg-theme-hover tg-border">
+                <figure>
+					<img src="images/img-01.jpg" alt="image description">
+					<figcaption class="fig-hover">
+						<a href="#" class="anchor-top">
+							<i class="fa fa-recycle"></i>
+						</a>
+						<a href="#" class="anchor-bottom">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</figcaption>
+				</figure>
+                <div class="tg-hover-box">
+                  <div class="tg-hover-content">
+                    <div class="tg-displaytable">
+                      <div class="tg-displaytablecell">
+                        <div class="tg-heading-border">
+                          <h3>recycling systems</h3>
+                        </div>
+                        <div class="tg-description">
+                          <p>Lorem ipsum dolor sit ametuar adipisicing elit sed dot.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+              <div class="tg-theme-hover tg-border">
+                <div class="tg-hover-box">
+                  <div class="tg-hover-content">
+                    <div class="tg-displaytable">
+                      <div class="tg-displaytablecell">
+                        <div class="tg-heading-border">
+                          <h3>Eco Consultancy</h3>
+                        </div>
+                        <div class="tg-description">
+                          <p>Lorem ipsum dolor sit ametuar adipisicing elit sed dot.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <figure>
+					<img src="images/img-02.jpg" alt="image description">
+					<figcaption class="fig-hover">
+						<a href="#" class="anchor-top">
+							<i class="fa fa-recycle"></i>
+						</a>
+						<a href="#" class="anchor-bottom">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</figcaption>
+				</figure>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+              <div class="tg-theme-hover tg-border">
+                <figure>
+					<img src="images/img-03.jpg" alt="image description">
+					<figcaption class="fig-hover">
+						<a href="#" class="anchor-top">
+							<i class="fa fa-recycle"></i>
+						</a>
+						<a href="#" class="anchor-bottom">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</figcaption>
+				</figure>
+                <div class="tg-hover-box">
+                  <div class="tg-hover-content">
+                    <div class="tg-displaytable">
+                      <div class="tg-displaytablecell">
+                        <div class="tg-heading-border">
+                          <h3>renewable energy</h3>
+                        </div>
+                        <div class="tg-description">
+                          <p>Lorem ipsum dolor sit ametuar adipisicing elit sed dot.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+			<!--************************************
+					Why Choose us End
+			*************************************--> 
+		</main>
+		<!--************************************
+				Main End
+		*************************************-->
+{% endblock %}

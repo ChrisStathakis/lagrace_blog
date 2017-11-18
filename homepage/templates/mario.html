@@ -1,0 +1,313 @@
+<html>
+
+<head>
+<style>
+html{
+  height:100%
+}
+body{
+  height:100%;
+  background: url(https://mymoda.gr/img/cms/contest_slider%20banner1.jpg) center center no-repeat;
+  background-size:cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:sans-serif;
+  margin:0;
+  overflow:hidden
+}
+#brand{  
+  text-align:center;
+  cursor:pointer;
+}
+#brand img{
+  display:block;
+  width:80vw;
+  max-width:700px;
+  height:auto;
+  transition:0.2s
+}
+#brand a{
+  display:block;
+  font-family: 'Passion One';
+  font-size:3em;
+  color:#333;
+  font-weight:800;
+  text-decoration:none;
+  background:rgba(0,0,40,0);
+  padding:5px 15px;
+  transition:0.4s
+}
+#brand:hover a{  
+  color:rgba(200,80,50,1);
+  text-shadow:2px 5px 0 rgba(0,0,0,0.6)
+}
+
+
+
+
+/* follow me @nodws */
+.btn-twtr{
+  color:#ddd;
+  border:2px solid;
+  border-radius:3px;
+  text-decoration:none;
+  display:inline-block;
+  padding:5px 10px;
+  font-family:sans-serif;
+  font-weight:600;
+  margin-top:80vh;
+  background:rgba(0,0,0,0.2);
+  box-shadow:0 0 0px 3px rgba(0,0,0,0.2);
+  opacity:0.8;
+  position:absolute;
+  bottom:20px;
+  right:20px
+}.btn-twtr:hover{color:#fff;}
+
+
+
+
+
+#feedback-page {
+  text-align: center;
+}
+
+#form-main {
+  width: 100%;
+  float: left;
+  padding-top: 0px;
+}
+
+#form-div {
+  background-color: rgba(72, 72, 72, 0.4);
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 35px;
+  padding-bottom: 50px;
+  width: 450px;
+  float: left;
+  left: 50%;
+  position: absolute;
+  margin-top: 30px;
+  margin-left: -260px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+.feedback-input {
+  color: #3c3c3c;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 0;
+  line-height: 22px;
+  background-color: #fbfbfb;
+  padding: 13px 13px 13px 54px;
+  margin-bottom: 10px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 3px solid rgba(0, 0, 0, 0);
+}
+
+.feedback-input:focus {
+  background: #fff;
+  box-shadow: 0;
+  border: 3px solid #3498db;
+  color: #3498db;
+  outline: none;
+  padding: 13px 13px 13px 54px;
+}
+
+.focused {
+  color: #30aed6;
+  border: #30aed6 solid 3px;
+}
+
+/* Icons ---------------------------------- */
+#name {
+  background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#name:focus {
+  background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+  background-size: 30px 30px;
+  background-position: 8px 5px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#email {
+  background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#email:focus {
+  background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#comment {
+  background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  line-height: 150%;
+  resize: vertical;
+}
+
+input:hover,
+textarea:hover,
+input:focus,
+textarea:focus {
+  background-color: white;
+}
+
+#button-blue {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  float: left;
+  width: 100%;
+  border: #fbfbfb solid 4px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+  font-size: 24px;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+}
+
+#button-blue:hover {
+  background-color: rgba(0, 0, 0, 0);
+  color: #0493bd;
+}
+
+.submit:hover {
+  color: #3498db;
+}
+
+.ease {
+  width: 0px;
+  height: 74px;
+  background-color: #fbfbfb;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.submit:hover .ease {
+  width: 100%;
+  background-color: white;
+}
+
+@media only screen and (max-width: 580px) {
+  #form-div {
+    left: 3%;
+    margin-right: 3%;
+    width: 88%;
+    margin-left: 0;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
+
+</style>
+</head>
+
+<body>
+<div id="brand"><img src="https://mymoda.gr/img/my-moda-shop-logo-1483534599.jpg">
+  <div id="form-main">
+  <div id="form-div">
+    <form class="form" id="form1">
+      
+      
+      <p class="email">
+        <input name="email" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />
+      </p>
+      
+     
+      
+      
+      <div class="submit">
+        <input type="submit" value="SEND" id="button-blue"/>
+        <div class="ease"></div>
+      </div>
+    </form>
+</div>
+</div>
+
+<footer>
+
+</footer>
+
+<script>
+let start = document.querySelector('#brand');
+let ex = 10;
+function swing(element) {
+
+    function update(time) {
+        
+        const x = Math.sin(time / 1231) * ex;
+        const y = Math.sin(time / 1458) * ex;
+
+        element.style.transform = [
+            `rotateX(${x}deg)`,
+            `rotateY(${y}deg)`
+        ].join(' ');
+
+        requestAnimationFrame(update);
+    }
+    update(0);
+}
+
+swing(start);
+
+
+let start_button = start.querySelector('a');
+let og_color = start_button.style.color;
+let inter = 0;
+
+start.addEventListener('mouseover', (e) => {
+  
+ ex = 20;  
+ inter = setInterval(()=>{  
+    start_button.style.color = '#'+Math.floor(Math.random()*16777215).toString(16); 
+  }, 1000); 
+  
+});
+
+
+start.addEventListener('mouseout', (e) => {
+  
+  ex = 10;
+  clearInterval(inter);
+  start_button.style.color = og_color; 
+  
+});
+	</script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,176 @@
+{% extends 'solec/index.html' %} {% load static %}
+
+
+{% block content %}
+<!--************************************
+			Banner Start
+	*************************************-->
+<div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" {% if index_page.contact_image %} data-image-src="{{ index_page.contact_image.url }}" {% else %}data-image-src="{% static 'solec/images/slider/img-01.jpg' %}"{% endif %}>
+    <div class="container">
+        <ul class="tg-breadcrumb">
+            <li>HOME</li>
+            <li>CONTACT US</li>
+        </ul>
+    </div>
+</div>
+<!--************************************
+			Banner End
+	*************************************-->
+<!--************************************
+			Main Start
+	*************************************-->
+		<main id="main" class="tg-haslayout tg-backgroundwhite">
+			<!--************************************
+				Get Social With Us Start
+			*************************************-->
+			<div class="tg-main-section tg-haslayout">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+							<div class="tg-section-head">
+								<h2>get social with us</h2>
+								<div class="tg-description">
+									<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimiam uis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+								</div>
+							</div>
+						</div>
+						<ul class="tg-socialicon big-icons tg-haslayout">
+							<li>
+								<a href="#">
+									<i class="fa fa-facebook-f"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-dribbble"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-twitter"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-google-plus"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-instagram"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--************************************
+				Get Social With Us End
+			*************************************-->
+			<!--************************************
+				Send Us a Message Start
+			*************************************-->
+			<div class="tg-main-section tg-haslayout tg-bggray">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+							<div class="tg-section-head">
+								<h2>Send us a message</h2>
+								<div class="tg-description">
+									<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimiam uis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<div class="row">
+								<form method="post" class="contact-form">{% csrf_token %}
+									<fieldset>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<i class="fa fa-user"></i>
+												<input type="text" name='name' class="form-control" placeholder="Full Name">
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<i class="fa fa-envelope"></i>
+												<input name='email' type="email" class="form-control" placeholder="Email Address">
+											</div>
+										</div>
+										<div class="col-xs-12">
+											<div class="form-group">
+												<i class="fa fa-paper-plane"></i>
+												<textarea name='text' class="form-control"></textarea>
+											</div>
+										</div>
+										<div class="col-xs-12">
+											<button type="submit" class="tg-btn">Send</button>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--************************************
+				Send Us a Message End
+			*************************************-->
+			<!--************************************
+					Brands Start
+			*************************************-->
+			<div class="tg-main-section tg-haslayout">
+				<div class="container">
+					<div class="row">
+						<div class="tg-brands tg-haslayout">
+							<div class="col-sm-3 col-xs-3 width-360">
+								<figure><a href="#"><img src="images/brand-01.png" alt="brand name"></a></figure>
+							</div>
+							<div class="col-sm-3 col-xs-3 width-360">
+								<figure><a href="#"><img src="images/brand-02.png" alt="brand name"></a></figure>
+							</div>
+							<div class="col-sm-3 col-xs-3 width-360">
+								<figure><a href="#"><img src="images/brand-03.png" alt="brand name"></a></figure>
+							</div>
+							<div class="col-sm-3 col-xs-3 width-360">
+								<figure><a href="#"><img src="images/brand-04.png" alt="brand name"></a></figure>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--************************************
+					Brands End
+			*************************************-->
+		</main>
+		<!--************************************
+				Main End
+		*************************************-->
+{% endblock %}
+{% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $myForm = $('.contact-form');
+        $myForm.submit(function (event) {
+            event.preventDefault();
+            var $formdata = $(this).serialize();
+            var $thisUrl = $myForm.attr("data-url") || window.location.href;
+            console.log($formdata);
+            $.ajax({
+                method: "POST",
+                url: $thisUrl,
+                data: $formdata,
+                success : handleSuccess,
+                error: handleError
+            });
+            function handleSuccess(data, textStatus, jqXHR) {
+                console.log(data, textStatus, jqXHR)
+            }
+            function handleError(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR, textStatus, errorThrown)
+
+            }
+        })
+    })
+</script>
+{% endblock %}

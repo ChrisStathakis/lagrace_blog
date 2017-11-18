@@ -1,0 +1,167 @@
+{% extends 'solec/index.html' %} {% load static %}
+
+
+{% block seo_title %}
+    <title>{{ page_title }}</title>
+    <meta name="description" content="{{ page_description }}">
+    <meta name="keywords" content="{{ page_keywords }}">
+{% endblock %}
+
+{% block menu_ul %}
+          <ul style='display: inline;' class="nav navbar-nav navbar-right">
+              <li ><a href="{% url 'homepage' %}">Home</a></li>
+              <li class="active"><a href="{% url 'stores' %}">Καταστηματα</a></li>   
+              <li><a href="{% url 'blog' %}">Blog</a></li>
+          </ul>
+{% endblock %}
+
+
+{% block content %}
+		<!--************************************
+				Banner Start
+		*************************************-->
+		<div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" data-image-src="{% static 'cat_wall.jpg' %}">
+			<div class="container">
+			<ul class="tg-breadcrumb">
+				<li><a style="text-decoration: none; color: white" href="{% url 'homepage' %}">HOME</a></li>
+				<li>{{ object.title }}</li>
+			</ul>
+			</div>
+		</div>
+		<!--************************************
+				Banner End
+		*************************************-->
+		<!--************************************
+				Main Start
+		*************************************-->
+		<main id="main" class="tg-haslayout">
+			<!--************************************
+					About us Start
+			*************************************-->
+			<section class="tg-main-section tg-haslayout">
+				<div class="container">
+					<div class="row">
+						<div class="tg-aboutus">
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<figure>
+									{% if object.image %}
+									<img src="{{ object.image.url }}" alt="image description">
+									{% else %}}
+									<img src="{% static 'no_image.png' %}" alt="image description">
+									{% endif %}
+								</figure>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<div class="tg-heading-border">
+									<h3>{{ object }}</h3>
+								</div>
+								<div class="tg-description">
+									{{ object.text|safe }}
+								</div>
+								<div style="margin-top: 3%: " class="tg-description">
+									<i class="fa fa-map-marker" aria-hidden="true"></i> {{ object.address|safe }}
+								</div>
+								<a href="#" class="tg-btn">Καλεστε μας στο  {{ phones.first.title }} </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--************************************
+					About us End
+			*************************************-->
+			<!--************************************
+					Save The Planet Start
+			*************************************-->
+			<section class="tg-main-section tg-haslayout bg-dark">
+			  <div class="container">
+				<div class="row">
+				  <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+					<div class="tg-section-head">
+					  <div class="tg-heading">
+						<h2>ΟΙ φωτογραφιες μας</h2>
+					  </div>
+					  <div class="tg-description"></div>
+					</div>
+				  </div>
+				  <div class="col-xs-12">
+					<div class="tg-portfolio tg-haslayout">
+					  <div class="tg-portfolio-head tg-haslayout">	
+					  </div>
+					  <div class="clearfix"></div>
+					  <div class="row">
+						<div id="filter-masonry" class="tg-portfolio-content tg-haslayout">
+							{% for image in image_photos %}
+								<div class="masonry-grid solar">
+									<div class="tg-project tg-border">
+									  <figure> <img src="{{ image.image.url }}" alt="image description"> </figure>
+									  <div class="tg-portfolio-hover">
+										<a class="anchor-bottom" href="{{ image.image.url }}" data-rel="prettyPhoto[product]"><i class="fa fa-search"></i></a> 
+									  </div>
+									</div>
+								</div>  
+							{% empty %}
+
+							{% endfor %}
+						</div>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</section>
+			<!--************************************
+					Save The Planet End
+			*************************************-->
+			<!--************************************
+				Counter Start
+			*************************************-->
+			<section class="tg-main-section tg-haslayout tg-bggreen tg-padding-half">
+				<div class="container">
+					<div class="row">
+						<div class="tg-counters">
+							<div class="tg-counter">
+								<div class="tg-heading-border tg-borderwhite">
+									<h6>ΚΥΡΙΑΚΟΥΛΑΚΟΣ</h6>
+								</div>
+								<h5>Ιδιοκτητης</h5>
+							</div>
+							<div class="tg-counter">
+								<div class="tg-heading-border tg-borderwhite">
+									<h6>2732029200</h6>
+								</div>
+								<h5>Τηλέφωνο mymoda.gr</h5>
+							</div>
+							<div class="tg-counter">
+								<div class="tg-heading-border tg-borderwhite">
+									<h6>lagrace@otenet.gr</h6>
+								</div>
+								<h5>Email Lagrace</h5>
+							</div>
+							<div class="tg-counter">
+								<div class="tg-heading-border tg-borderwhite">
+									<h6>info@mymoda.gr</h6>
+								</div>
+								<h5>Email mymoda</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--************************************
+				Counter End
+			*************************************-->
+
+			
+		<div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" data-image-src="{% static 'cat_wall.jpg' %}">
+			<div class="container">
+			
+			</div>
+		</div>
+			
+			
+		</main>
+		<!--************************************
+				Main End
+		*************************************-->
+{% endblock %}		

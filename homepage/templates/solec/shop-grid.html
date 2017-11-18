@@ -1,0 +1,378 @@
+{% extends 'solec/index.html' %} {% load static %}
+
+{% block seo_title %}
+	<title>{{ index_page.title }} | {{ page_title }}</title>
+	<meta name="description" content="{{ description }}">
+    <meta name="description" content="{{ keywords }}">
+{% endblock %}
+
+{% block menu_ul %}
+        <ul class="navbar-right">
+            <li class=""><a href="{% url 'homepage' %}">Home</a></li>
+            {% if new_products_page %}<li class="active"><a href="{% url 'new_products' %}">new products</a></li>{% else %} <li><a href="{% url 'new_products' %}">new products</a></li>{% endif %}
+            {% if offers_page %}<li class="active"><a  href="">offers</a></li>{% else %}<li><a href="">offers</a></li>{% endif %}
+            {% if category_page %}<li class="active">{% else %}<li>{% endif %}<a href="">Categories</a>
+                <ul>
+                    {% for category in categories %}<li><a href="">{{ category }}</a></li>{% endfor %}
+                </ul>
+            </li>
+            <li> <a href="">contact</a></li>
+            {% if request.user.is_authenticated  %}
+                <li><a href="">{{ request.user }}</a></li>
+            {% else %}
+                <li> <a href="">Login</a></li>
+            {% endif %}
+        </ul>
+    {% endblock %}
+
+{% block content %}
+
+    <!--************************************
+				Banner Start
+	*************************************-->
+    {% if object.image %}
+		<div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" data-image-src="{{ object.image.url }}">
+			<div class="container">
+			<ul class="tg-breadcrumb">
+				<li>Home</li>
+				<li>{% if object %}{{ object }}{% else %}{{ page_title }}{% endif %}</li>
+			</ul>
+			</div>
+		</div>
+    {% else %}
+        <div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" data-image-src="{% static 'solec/images/slider/img-03.jpg' %}">
+			<div class="container">
+			<ul class="tg-breadcrumb">
+				<li>Home</li>
+				<li>{% if object %}{{ object }}{% else %}{{ page_title }}{% endif %}</li>
+			</ul>
+			</div>
+		</div>
+    {% endif %}
+		<!--************************************
+				Banner End
+		*************************************-->
+		<!--************************************
+				Main Start
+		*************************************-->
+        <form method="get">
+		<main id="main" class="tg-haslayout">
+			<div class="tg-main-section tg-haslayout tg-backgroundwhite">
+				<div class="container">
+					<div class="row">
+						<div id="tg-content" class="tg-content">
+							<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 pull-right">
+								<div class="row">
+									<div class="col-xs-12">
+										<div id="tg-shop-sale-slider" class="tg-shop-sale-slider tg-border">
+                                            {% for product in featured_products %}
+											    <div class="item">
+												{% if product.price_discount > 0 %}<span class="tg-sale">sale</span>{% endif %}
+												{% if product.image %}
+                                                    <figure><img src="{{ product.image }}" alt="{{ product.title }}"></figure>
+                                                {% else %}
+                                                    <figure><img src="{% static 'no_image.png' %}" alt="image description"></figure>
+                                                {% endif %}
+												<div class="slider-caption">
+													<h2>{{ product.title }}</h2>
+													<div class="tg-description">
+														<p>{{ product.internet_description }}</p><br><p>{{ product.tag_site_price}}</p>
+													</div>
+													<div class="tg-btnarea">
+														<a href="" class="tg-btn">Details</a>
+														<a href="" class="tg-btn">Add to cart</a>
+													</div>
+												</div>
+											</div>
+                                            {% endfor %}
+										</div>
+									</div>
+									<div class="col-xs-12">
+										<div class="shop-head">
+											<ul class="tg-shopview">
+												<li class="active">
+													<a href=""><i class="fa fa-th"></i></a>
+												</li>
+												<li>
+													<a href=""><i class="fa fa-list"></i></a>
+												</li>
+											</ul>
+											<div class="product-perpage">
+												<select>
+													<option>price low-->high</option>
+													<option>price high-->low</option>
+													<option>name A-->Z</option>
+													<option>name Z-->A</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<!--************************************
+										Products Start
+									*************************************-->
+									<div  class="tg-products tg-haslayout product-list">
+                                    {% for product in object_list %}
+										<div class="col-sm-4 col-xs-6">
+											<div class="tg-product tg-border tg-haslayout product-list">
+                                                <figure>
+                                                {% if product.price_discount > 0 %} <span class="tg-sale">sale</span> {% endif %}
+                                                {% if product.image %}
+                                                    <a href=""> <img src="{{ product.image }}" alt="image description"> </a>
+                                                    {% else %}
+                                                        <a href=""> <img src="{% static 'no_image.png' %}" alt="image description"> </a>
+                                                    {% endif %}
+                                                    <div class="tg-product-hover">
+                                                        <a href="" class="anchor-top"><i class="fa fa-cart-plus"></i></a>
+                                                        <a href="" class="anchor-right"><i class="fa fa-eye"></i></a>
+                                                    </div>
+                                                </figure>
+                                                <div class="tg-product-data tg-bordertop">
+                                                    <div class="tg-heading-border">
+                                                        <h3><a href="">{{ product.title }}</a></h3>
+                                                        <div class="tg-rating"> {{ product.brand }} </div>
+                                                    </div>
+                                                    {% if product.price_discount > 0 %}
+                                                        <span class="tg-product-price"> <em>{{ product.tag_price_discount }}</em> <del>{{ product.tag_price }}</del> </span>
+                                                    {% else %}
+                                                        <span class="tg-product-price"> <em>{{ product.tag_price }}</em></span>
+                                                    {% endif %}
+                                                </div>
+                                                <a href="" style="width: 100%;background-color: #82b440" class="btn btn-default">Details</a>
+                                            </div>
+										</div>
+                                    {% endfor %}
+									</div>
+									<!--************************************
+										Products End
+									*************************************-->
+
+										<nav class="tg-pagination">
+											<ul>
+                                                {% if page_obj.has_previous %}
+												    <li class="tg-previous">
+                                                        <button name="page" value="{{ page_obj.previous_page_number }}">
+                                                            <i class="fa fa-angle-left"></i>
+                                                        </button>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="tg-previous">
+                                                        <button name="page" value="" disabled>
+                                                            <i class="fa fa-angle-left"></i>
+                                                        </button>
+                                                    </li>
+                                                {% endif %}
+												<li style="width: auto"><a href="#">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}. </a></li>
+
+
+                                                {% if page_obj.has_next %}
+												    <li class="tg-next">
+                                                        <button name="page" value="{{ page_obj.next_page_number }}">
+                                                        <i class="fa fa-angle-right"></i></button>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="tg-previous">
+                                                        <button name="page" value="" disabled>
+                                                            <i class="fa fa-angle-right"></i>
+                                                        </button>
+                                                    </li>
+                                                {% endif %}
+											</ul>
+										</nav>
+									</div>
+								</div>
+							</div>
+							<!--************************************
+										Sidebar Start
+							*************************************-->
+							<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 pull-left">
+								<aside id="tg-shop-sidebar" class="tg-shop-sidebar">
+
+									<div class="tg-widget widget-accordions">
+										<div class="tg-widget-holder">
+											<h3>Categories</h3>
+											<ul class="tg-haslayout accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                                                {% for key, value in site_cate.items %}
+                                                    {% if forloop.first %}
+												        <li class="tg-panel panel">
+													<div class="tg-panel-heading actives" role="tab" id="headingOne">
+														<h4 class="actives">
+															<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{ key }}</a>
+														</h4>
+													</div>
+													<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+														<ul>
+														{% for cat in value %}
+														        {% if cat.id|stringformat:"s" in cate_name %}
+                                                                    <li><em>{{ cat }}</em>
+                                                                        <input class="cate_name" value="{{ cat.id }}" type="checkbox" name="cate_name" checked>
+                                                                    </li>
+                                                                {% else %}
+                                                                    <li><em>{{ cat }}</em>
+                                                                        <input class="cate_name"  value="{{ cat.id }}" type="checkbox" name="cate_name">
+                                                                    </li>
+                                                                {% endif %}
+                                                        {% endfor %}
+                                                        </ul>
+													</div>
+												</li>
+                                                    {% else %}
+                                                        <li class="tg-panel panel">
+													<div class="tg-panel-heading" role="tab" id="headingTwo">
+														<h4>
+															<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">{{ key }}</a>
+														</h4>
+													</div>
+													<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+														<ul>
+                                                            {% for cat in value %}
+														        {% if cat.id|stringformat:"s" in cate_name %}
+                                                                    <li><em>{{ cat }}</em>
+                                                                        <input class="cate_name"  value="{{ cat.id }}" type="checkbox" name="cate_name" checked>
+                                                                    </li>
+                                                                {% else %}
+                                                                    <li><em>{{ cat }}</em>
+                                                                        <input class="cate_name"  value="{{ cat.id }}" type="checkbox" name="cate_name">
+                                                                    </li>
+                                                                {% endif %}
+                                                        {% endfor %}
+                                                        </ul>
+													</div>
+												</li>
+                                                    {% endif %}
+                                                {% endfor %}
+
+
+											</ul>
+										</div>
+									</div>
+									<div class="tg-widget widget-brands">
+										<div class="tg-widget-holder">
+											<h3>Brands</h3>
+											<ul>
+                                                {% for brand in brands %}
+                                                    {% if brand.id|stringformat:"s" in brand_name %}
+                                                        <li><em>{{ brand }}</em>
+														<input  value="{{ brand.id }}" type="checkbox" name="brand_name" class="brand_name" checked>
+                                                        </li>
+                                                    {% else %}
+                                                    <li><em>{{ brand }}</em>
+														<input  value="{{ brand.id }}" type="checkbox" class="brand_name" name="brand_name">
+                                                    </li>
+                                                    {% endif %}
+                                                {% endfor %}
+											</ul>
+										</div>
+									</div>
+                                    <div class="tg-widget widget-brands">
+										<div class="tg-widget-holder">
+											<h3>Colors</h3>
+											<ul>
+                                                {% for color in colors %}
+                                                    {% if color.id|stringformat:"s" in color_name %}
+                                                        <li><em>{{ color }}</em>
+														<input  value="{{ color.id }}" type="checkbox" name="color_name" class="color_name" checked>
+                                                        </li>
+                                                    {% else %}
+                                                    <li><em>{{ color }}</em>
+														<input  value="{{ color.id }}" type="checkbox" class="color_name" name="color_name">
+                                                    </li>
+                                                    {% endif %}
+                                                {% endfor %}
+											</ul>
+										</div>
+									</div>
+									<div class="tg-widget widget-filterbyprice">
+										<div class="tg-widget-holder">
+											<h3>Filter by Price</h3>
+											<div class="tg-filterbyprice">
+												<div id="slider-range" class="slider-range"></div>
+												<div class="price-display">
+													<div class="prices">
+														<label for="amount">Price : </label>
+														<input type="text" id="amount" readonly />
+													</div>
+													<button type="submit" class="filter tg-btn">Filter Now</button>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="tg-widget widget-popularproducts">
+										<div class="tg-widget-holder">
+											<h3>Most Popular</h3>
+											<ul class="product_list_widget">
+                                                {% for product in popular_products %}
+												<li>
+                                                    {% if product.image %}
+													    <a href="{% url 'product_page' product.slug %}"><img src="{{ product.image.url }}" alt="{{ product.title }}"></a>
+                                                    {% else %}
+                                                        <a href="{% url 'product_page' product.slug %}"><img width="50" height="50" src="{% static 'no_image.png' %}" alt="{{ product.title }}"></a>
+                                                    {% endif %}
+													<div class="tg-product-data">
+														<span class="product-title">{{ product.title }}</span>
+														<span class="amount">{{ product.tag_site_price }}</span>
+														<span class="rating">{{ product.brand }}</span>
+													</div>
+												</li>
+												{% endfor %}
+											</ul>
+										</div>
+									</div>
+								</aside>
+							</div>
+							<!--************************************
+										Sidebar End
+							*************************************-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+        </form>
+		<!--************************************
+				Main End
+		*************************************-->
+
+    {% endblock %}
+
+
+{% block extra_js %}
+    {% if category_page %}
+    <script type="text/javascript">
+        console.log('works');
+        $('.cate_name').on('click', function () {
+            console.log('clicked');
+            var checkbox_value = [];
+            $(':checkbox').each(function () {
+                var ischecked = $(this).is(':checked');
+                if(ischecked) {
+                    checkbox_value.push($(this).val());
+                }
+            });
+            $.ajax({
+                url: '{{ request.get_full_path }}',
+                type: 'GET',
+                data: {
+                    'cate_name': checkbox_value
+                },
+                success: searchSuccess,
+                error: searchError
+
+            })
+        });
+        function searchSuccess(data, textStatus, jqXHR) {
+            console.log('works!');
+            $('.product-list').empty().html(data)
+
+        }
+
+        function searchError(data, textStatus, jqXHR) {
+            console.log('Error')
+        }
+
+    </script>
+    {% endif %}
+    {% if new_products_page %}
+    <script src="{% static 'solec/js/shop_grid.js' %}"></script>
+    {% endif %}
+{% endblock %}

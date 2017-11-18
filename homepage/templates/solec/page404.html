@@ -1,0 +1,27 @@
+{% extends 'solec/index.html' %}
+	
+
+
+{% block content %}
+<!--************************************
+			Banner Start
+	*************************************-->
+<div class="tg-main-section tg-banner tg-haslayout parallax-window" data-parallax="scroll" data-bleed="100" data-speed="0.2" {% if index_page.contact_image %} data-image-src="{{ index_page.contact_image.url }}" {% else %}data-image-src="{% static 'solec/images/slider/img-01.jpg' %}"{% endif %}>
+    <div class="container">
+        <ul class="tg-breadcrumb">
+            <li>HOME</li>
+            <li>CONTACT US</li>
+        </ul>
+    </div>
+</div>
+<!--************************************
+			Banner End
+	*************************************-->
+
+<main id="main" class="tg-haslayout">
+	<div style="margin-top:300px;" class="container">
+		<h4>heello</h4>
+	</div>
+</main>
+
+{% endblock %}

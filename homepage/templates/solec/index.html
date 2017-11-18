@@ -1,0 +1,538 @@
+<!doctype html>{% load static %}
+<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>			<html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+    {% block seo_title %}
+        <title>{{ index_page.title }}</title>
+        <meta name="description" content="{{ page_description }}">
+        <meta name="keywords" content="{{ page_keywords }}">
+
+    {% endblock %}
+
+    {% block facebook_block %}
+
+    {% endblock %}
+	
+  <link rel="apple-touch-icon" href="{% static 'solec/images/my_images/simply.png' %}">
+  <link rel="stylesheet" href="{% static 'solec/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'solec/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'solec/css/owl.theme.css' %}">
+  <link rel="stylesheet" href="{% static 'solec/css/owl.carousel.css' %}">
+  <link rel="stylesheet" href="{% static 'solec/css/prettyPhoto.css' %}">
+  <link rel="stylesheet" href="{% static 'solec/css/swiper.css' %}">
+  <link rel="stylesheet" href="{% static 'solec/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'solec/css/transitions.css' %}">
+  <link rel="stylesheet" href="{% static 'solec/css/color.css' %}">
+  <link rel="stylesheet" href="{% static 'solec/css/responsive.css' %}">
+
+
+
+    {% block extra_css %}
+    	<style>
+            {% if index_page.background_image  %}
+               .tg-home-slider {
+                background: url({{ index_page.background_image.url }}) no-repeat 50% 100%;
+            }
+            {% else %}
+            .tg-home-slider {
+                background: url({% static 'solec/my_images/banner.png' %}) no-repeat 50% 100%;
+            }
+            {% endif %}
+           </style>
+        {% if index_page.banner_image %}
+        	
+            <style>
+                .tg-home-slider {
+                background: url({{ index_page.banner_image.url }}) no-repeat 50% 100%;
+            }
+            </style>
+        {% endif %}
+        {% if index_page.circle_image %}
+            <style>
+                .lifestyle-area {
+                    background: url({{ index_page.circle_image.url }}) no-repeat 50% 0;
+                }
+            </style>
+        {% endif %}
+     {% endblock %}
+     <style>
+       #header #tg-nav ul li a {
+          color: #fdfdfd;
+        }
+        
+      #header .navbar-collapse.collapse {
+        background-color: floralwhite;
+        }
+    
+   </style>
+</head>
+<body class="home">
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/el_GR/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+   <!-- Fixed navbar -->
+    
+	<!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+  <!-- preload banner
+	<div class="preloader-bg">
+    <img src={% static 'solec/my_images/banner.png' %}>
+	</div>
+   -->
+	<!--************************************
+			Wrapper Start
+	*************************************-->
+<div id="wrapper" class="tg-haslayout">
+	<!--************************************
+			Header Start
+	*************************************-->
+	<header id="header" class="tg-header tg-haslayout">	
+    <div class='navbar navbar-fixed-top'>
+      <nav class='navbar-inner header'>
+        <div class='container my_navbar'>
+          <div class='navbar-brand'>
+            <button type="button " class="navbar-toggle collapsed btn-xs" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="{% url 'homepage' %}"> <img width='100px' height="50px" src="{% static 'solec/images/logo1.png' %}" alt="image description"></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+          {% block menu_ul %}
+          <ul style='display: inline;' class="nav navbar-nav navbar-right">
+              <li class="active"><a href="{% url 'homepage' %}">Home</a></li>
+              <li><a href="{% url 'stores' %}">Καταστηματα</a></li>   
+              <li><a href="{% url 'blog' %}">Blog</a></li>
+          </ul>
+          {% endblock %}
+          <div class='triangle-down center'>
+          <p>
+            <i class='fa fa-chevron-down fa-2x isDown' id='toggle'></i>
+          </p>
+          </div>
+        </div>
+      </nav>
+    <br>
+  </div>
+	</header>
+	<!--************************************
+			Header End
+	*************************************-->
+{% block content %}
+	<!--************************************
+			Home Slider Start
+	*************************************-->
+	<div style="height: 800px;" id="tg-home-slider" class="tg-home-slider tg-haslayout">
+			<div class="item">
+				<div class="container">
+					<div class="row">
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!--************************************
+			Home Slider End
+	*************************************-->
+	<!--************************************
+			Main Start
+	*************************************-->
+  <main id="main" class="tg-haslayout"> 
+    <!--************************************
+      Save The Planet Start
+  *************************************-->
+    <section class="tg-main-section tg-haslayout bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+            <div class="tg-section-head">
+        <div class="tg-heading">
+                <h2>Δειτε το Blog μας</h2>
+        </div>
+              <div class="tg-description">
+                <p>Όλες οι τελευταίες παραλαβές και προτάσεις μας και για αυτήν την Season είναι εδώ! Προτάσεις μόδας μέσα από την μεγάλη γκάμα προϊόντων των καταστημάτων μας.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="tg-portfolio tg-haslayout">
+              <div class="tg-portfolio-head tg-haslayout">
+                <nav class="tg-nav">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                  </div>
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                    <ul id="tg-filterbale-nav" class="option-set">
+                      <li class="current-menu-item"><a data-filter="*" href="#">All</a></li>
+                      {% for category in blog_category %}
+                        <li><a data-filter=".{{ category.css_class }}" href="#">{{ category }}</a></li>
+                      {% endfor %}  
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+              <div class="clearfix"></div>
+              <div class="row">
+                <div id="filter-masonry" class="tg-portfolio-content tg-haslayout">
+                  {% for post in posts %}
+                    <div class="masonry-grid {{ post.category.css_class }}">
+                      <div class="tg-project tg-border">
+                        <figure> <img src="{{ post.image.url }}" alt="image description"> </figure>
+                        <div class="tg-portfolio-hover">
+                          <div class="tg-heading-border">
+                              <h3 style="color: white; margin-bottom: 0%; ">{{ post.title }}</h3>
+                           </div>
+                          <a class="anchor-bottom" href="{% url 'blog_detail' post.slug %}">{ post.title }}<i class="fa fa-arrow-right"></i></a> 
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}                                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--************************************
+      Save The Planet End
+  *************************************--> 
+    
+    <!--************************************
+			Improve Lifestyle Start
+	*************************************-->
+    <section class="lifestyle-area tg-main-section tg-haslayout">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+            <div class="tg-section-head">
+              <h2>Η ΙΣΤΟΡΙΑ ΜΑΣ</h2>
+              <div class="tg-description">
+                <p>Εδώ και τρεις δεκαετίες τα Καταστήματα LaGrace, είναι δίπλα σας πάντα με την τελευταία λέξη της μόδας.</p>
+              </div>
+            </div>
+          </div>
+          <div class="tg-improvelifestyle tg-haslayout">
+              {% for circle in circe_images %}
+                  <div class="col-sm-4">
+                      <div class="tg-box">
+                        <div class="tg-improve-box">
+                          <div class="tg-improve-holder">
+                            <figure> <img src="{{ circle.image.url }}" alt="image description"> </figure>
+                            <div class="tg-improve-content">
+                              <div class="tg-displaytable">
+                                <div class="tg-displaytablecell">
+                                  <div class="tg-heading-border tg-borderwhite"> <i class="{{ circle.icon }}"></i> </div>
+                                  <h3>{{ circle.title }}</h3>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--************************************
+			Improve Lifestyle End
+	*************************************--> 
+  <!--**********************************
+      Why Choose us Start
+    *************************************-->
+    <section class="tg-main-section tg-haslayout">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+            <div class="tg-section-head">
+              <h2>Ποιοι ειμαστε</h2>
+              <div class="tg-description">
+              </div>
+            </div>
+          </div>
+          <div class="tg-whychoiceus tg-haslayout">
+            {% for store in stores %}
+              {% if forloop.counter|divisibleby:2  %}
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                  <div class="tg-theme-hover tg-border">
+                    <div class="tg-hover-box">
+                      <div class="tg-hover-content">
+                        <div class="tg-displaytable">
+                          <div class="tg-displaytablecell">
+                            <div class="tg-heading-border">
+                              <h3>{{ store }}</h3>
+                            </div>
+                            <div class="tg-description">
+                              <p>{{ store.text|safe|truncatewords_html:10 }}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <figure>
+                      {% if store.image %}
+                      <img src="{{ store.image.url }}" alt="featured">
+                      {% else %}
+                        <img src="{% static 'no_image.png'%}">
+                      {% endif %}  
+                      <figcaption class="fig-hover">
+                        <a href="{% url 'store_detail' store.slug %}" class="anchor-top">
+                          <i class="fa fa-map-marker"></i>
+                        </a>
+                        <a href="{% url 'store_detail' store.slug %}" class="anchor-bottom">
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>     
+              {% else %}
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                  <div class="tg-theme-hover tg-border">
+                    <figure>
+                      {% if store.image %}
+                      <img src="{{ store.image.url }}" alt="featured">
+                      {% else %}
+                        <img src="{% static 'no_image.png'%}">
+                      {% endif %}  
+                      <figcaption class="fig-hover">
+                        <a href="{% url 'store_detail' store.slug %}" class="anchor-top">
+                          <i class="fa fa-map-marker"></i>
+                        </a>
+                        <a href="{% url 'store_detail' store.slug %}" class="anchor-bottom">
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </figcaption>
+                    </figure>
+                    <div class="tg-hover-box">
+                      <div class="tg-hover-content">
+                        <div class="tg-displaytable">
+                          <div class="tg-displaytablecell">
+                            <div class="tg-heading-border">
+                              <h3>{{ store }}</h3>
+                            </div>
+                            <div class="tg-description">
+                              <p>{{ store.text|safe|truncatewords_html:10 }}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--************************************
+      Why Choose us End
+  *************************************--> 
+     
+    <!--************************************
+			Counter Start
+	*************************************-->
+    <section class="tg-main-section tg-haslayout tg-bggreen tg-padding-half">
+      <div class="container">
+        <div class="row">
+          <div class="tg-counters">
+            <div class="tg-counter">
+              <div class="tg-heading-border tg-borderwhite">
+                <h2><span class="tg-timer" data-from="0" data-to="1995" data-speed="1200" data-refresh-interval="50">1995</span></h2>
+              </div>
+              <h3>Καταστημα Μολαοι</h3>
+            </div>
+            <div class="tg-counter">
+              <div class="tg-heading-border tg-borderwhite">
+                <h2><span class="tg-timer" data-from="0" data-to="2000" data-speed="1200" data-refresh-interval="50">2000</span></h2>
+              </div>
+              <h3>Καταστημα Σκαλα</h3>
+            </div>
+            <div class="tg-counter">
+              <div class="tg-heading-border tg-borderwhite">
+                <h2><span class="tg-timer" data-from="0" data-to="2014" data-speed="1200" data-refresh-interval="50">2014</span></h2>
+              </div>
+              <h3>mymoda.gr</h3>
+            </div>
+            <div class="tg-counter">
+              <div class="tg-heading-border tg-borderwhite">
+                <h2><span class="tg-timer" data-from="0" data-to="2017" data-speed="1200" data-refresh-interval="50">2017</span></h2>
+              </div>
+              <h3>Καταστημα Boom</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--************************************
+			Counter End
+	*************************************--> 
+
+  <section class="tg-main-section tg-haslayout bg-dark">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+              <div class="tg-section-head">
+                <div class="tg-heading">
+                    <h2>Δειτε Νεα απο το Instagram μας</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            {% for instagram_post in instagram_feed %}
+              <div class="col-md-3">
+                {{ instagram_post.instagram_url|safe }}
+              </div>
+            {% endfor %}
+          </div> 
+      </div>
+    </section>
+
+   
+
+  </main>
+	<!--************************************
+			Main End
+	*************************************-->
+
+{% endblock %}
+	<!--************************************
+			Footer Start
+	*************************************-->
+  <footer id="footer" class="tg-haslayout">
+    <div class="four-columns haslayout">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-xs-6 width-footercol">
+            <div class="col aboutus"> <strong class="logo"> <a href="{% url 'homepage' %}"><img src="{% static 'solec/images/logo1.png' %}" alt="image description"></a> </strong>
+              <div class="tg-description">
+                <h4> Διευθυνσεις Καταστηματων</h4>
+                <p>
+                  Σκάλα... Κεντρικό Κατάστημα <br>
+                  Σκάλα... BOOM  <br>
+                  Μολάοι... Νικ. Παπαμιχαλοπούλου, Τηλ...  2732029006, 2732023884
+                </p>
+              </div>
+              <ul class="tg-socialicon">
+                <li><a target="_blank" href="https://www.facebook.com/lagrace.molaoi"><i class="fa fa-facebook-f"></i></a></li>
+                <li><a target="_blank" href="https://www.instagram.com/mymoda.gr/"><i class="fa fa-instagram"></i></a></li>
+                <li><a target="_blank" href="https://mymoda.gr/"><i class="fa fa-external-link"></i></a></li>
+                
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-6 width-footercol">
+            <div class="col tg-recent-post">
+              <div class="tg-heading-border">
+                <h3>Τα Καταστηματα μας</h3>
+              </div>
+              <ul>
+                {% for store in stores %}
+                <li> <a href="{% url 'store_detail' store.slug %}">
+                  <p>{{ store }}</p>
+                  </a> 
+                </li>
+                {% endfor %}
+               
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-6 width-footercol">
+            <div class="col tg-tags">
+              <div class="tg-heading-border">
+                <h3>Τα Brand μας</h3>
+              </div>
+              <ul>
+                {% for brand in brands %}
+                  <li><a target="_blank" href="{{ brand.href }}">{{ brand }}</a></li>
+                {% endfor %}
+                
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-6 width-footercol">
+            <div class="col tg-recent-post">
+              <div class="tg-heading-border">
+                <h3>ΕΠΙΚΟΙΝΩΝΙΑ</h3>
+              </div>
+              <ul>
+                <li> <a>
+                  <p><i class="fa fa-envelope" aria-hidden="true"></i> lagrace@otenet.gr</p>
+                  </a> 
+                </li>
+                 <li> <a>
+                  <p><i class="fa fa-envelope" aria-hidden="true"></i> info@mymoda.gr</p>
+                  </a> 
+                </li>
+                <li><a><p><i class="fa fa-phone" aria-hidden="true"></i> Σκαλα  2735029104</p></a>
+                </li>
+                <li><a><p><i class="fa fa-phone" aria-hidden="true"></i> Boom  2735093332</p></a>
+                </li>
+                <li><a><p><i class="fa fa-phone" aria-hidden="true"></i> Μολάοι  2732023334</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-bar haslayout">
+      <div class="container">
+        <div class="copyright">
+          <p>Copyright 2017 &copy; <a href ="http://freecssthemes.com/" target="_blank" title="Click to get this template!"/>FreeCssThemes</a> | All Rights Reserved. Designed by Christos Stathakis</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+	<!--************************************
+			Footer End
+	*************************************-->
+</div>
+	<!--************************************
+			Wrapper End
+	*************************************-->
+
+    {% include 'include/include_js.html' %}
+    {% block extra_js %}
+      <script type="text/javascript">
+        $("#toggle").click( function(event){
+    event.preventDefault();
+    if ($(this).hasClass("isDown") ) {
+        $( ".navbar-fixed-top" ).animate({ "margin-top": "-62px" }, "fast" );  
+        $( "#content" ).animate({ "margin-top": "5px" }, "fast" );
+        $(this).removeClass("isDown");
+    } else {
+        $( ".navbar-fixed-top" ).animate({ "margin-top": "0px" }, "fast" );
+        $( "#content" ).animate({ "margin-top": "80px" }, "fast" );
+        $(this).addClass("isDown");
+    }
+    return false;
+});
+      </script>
+     {% endblock %}
+
+</body>
+</html>
